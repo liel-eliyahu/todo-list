@@ -1,10 +1,21 @@
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
+
 export class AppComponent {
-  title = 'todo-list';
+  todos = ['smile', 'eat', 'drink'];
+
+
+  // addTask(newTask: string) {
+  //   if (newTask) {
+  //     this.value.push(newTask);
+  //     console.log(this.value);
+
+  //   }
+  // }
 }

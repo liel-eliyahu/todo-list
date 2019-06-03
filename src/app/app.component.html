@@ -7,17 +7,10 @@
 <hr>
 
 <ul>
-  <li>{{this.todos[0]}}</li>
-  <li>{{this.todos[1]}}</li>
-  <li>{{this.todos[2]}}</li>
+  <li *ngFor="let i of this.todos">
+    {{i}}
+    </li>
 </ul>
-
-
-
-
-
-
-
 
 <!-- <input #newTask (keyup.enter)="addTask(newTask.todos)" (blur)="addTask(newTask.todos); newTask.todos='' ">
 

@@ -1,17 +1,17 @@
-<div style="text-align:center">
-  <h1>
+<div class="container">
+  <h1 class="display-4 text-center">
     TO DO LIST
   </h1>
+  <input class="form-control w-25 mx-auto" #newTodo (keyup.enter)="addTodo(newTodo.value)" (keyup.enter)="newTodo.value=''"/>
+
+  <ul class="mt-5 w-75 mx-auto">
+    <li class= " list-group-item p-3" *ngFor="let todo of todos ;let i = index">
+      <input  #checkbox type="checkbox" (change)="check(checkbox.checked, i)"/>
+      {{todo}}
+      <i class="fa fa-trash-o fa-2x float-right" aria-hidden="false" (click)=delete(i) ></i>
+      <i class="fa fa-pencil-square-o fa-2x float-right mr-2" aria-hidden="false" (click)=edit(i,newTodo.value)></i>
+    </li>
+  </ul>
 </div>
 
-<hr>
-
-<ul>
-  <li *ngFor="let i of this.todos">
-    {{i}}
-    </li>
-</ul>
-
-<!-- <input #newTask (keyup.enter)="addTask(newTask.todos)" (blur)="addTask(newTask.todos); newTask.todos='' ">
-
-<button (click)="addTask(newTask.todos)">Add</button> -->
+<!-- list-group-item p-3" -->

@@ -1,0 +1,12 @@
+<i [class]="todo.completeMode ? 'fa fa-check-square-o mr-3' : 'fa fa-square-o mr-3'" (click)=check(i)></i>
+
+<i class="fa fa-trash-o float-right " (click)=delete(i)></i>
+
+<ng-container *ngIf=!todo.editMode>
+  <span [class]="todo.completeMode ? 'strikethrough' : ''" (click)=tuggleEditMode(i)>{{todo.name}}</span>
+</ng-container>
+
+<i class="fa fa-pencil-square-o float-right  mr-2" (click)=tuggleEditMode(i)></i>
+<ng-container *ngIf=todo.editMode>
+  <span><input #editTodo [value]=todo.name (keyup.enter)="edit(i,editTodo.value)" (blur)=tuggleEditMode(i)></span>
+</ng-container>

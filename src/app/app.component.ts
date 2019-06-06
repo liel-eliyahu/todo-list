@@ -1,35 +1,39 @@
-import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { stringify } from '@angular/compiler/src/util';
-import { NgClass } from '@angular/common';
-
+import { Component, SimpleChange } from '@angular/core';
+import { Todo } from '../_models/todo';
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
 })
-
 export class AppComponent {
-  todos = ['smile', 'eat', 'drink'];
-  index: number;
-  doneClass: string;
+  todos: Todo[];
 
-  addTodo(newTodo) {
-    if (newTodo) {
-      this.todos.push(newTodo);
+  constructor() {
+    this.todos = [
+      new Todo('smile'),
+      new Todo('run'),
+      new Todo('walk')
+    ];
+  }
+
+  addTodo(nameTodo: string) {
+    if (nameTodo) {
+      this.todos.push(new Todo(nameTodo));
     }
   }
-  check(done, indexOldTodo) {
-    if (done) {
-      console.log('1');
-      this.doneClass = 'strikethrough';
+  check(indexTodo: number) {
+    this.todos[indexTodo].completeMode = !this.todos[indexTodo].completeMode;
+  }
+  tuggleEditMode(indexTodo: number) {
+    this.todos[indexTodo].editMode = !this.todos[indexTodo].editMode;
+  }
+  edit(indexTodo: number, nameTodo: string) {
+    if (nameTodo) {
+      this.todos[indexTodo].name = nameTodo;
     }
+    this.todos[indexTodo].editMode = false;
   }
-  edit(indexOldTodo, newTodo) {
-    this.todos[indexOldTodo] = newTodo;
-  }
-  delete(indexTodo) {
+  delete(indexTodo: number) {
     this.todos.splice(indexTodo, 1);
-    console.log(this.todos);
-
   }
 }

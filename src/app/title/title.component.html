@@ -1,0 +1,6 @@
+<h1 class="text-center custom-font mt-4" style>
+  {{title }}
+</h1>
+
+<input class="form-control w-25 mx-auto mt-4" #todo placeholder="new todo" (keyup.enter)="newTodo(todo.value)"
+(keyup.enter)="newTodo.value=''" />
